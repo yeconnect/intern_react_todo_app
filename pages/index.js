@@ -46,10 +46,10 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className="text-3xl font-bold">Todo List</h1>
-        <div class="grid grid-cols-3 gap-4">
-          <div class="col-span-2">
+        <div className="grid grid-cols-3 gap-4">
+          <div className="col-span-2">
             <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               autoFocus={true}
               type="text"
               placeholder="Todo List"
@@ -57,12 +57,12 @@ export default function Home() {
               onChange={(e) => setTodoTitle(e.target.value)}
             ></input>
           </div>
-          <div class="add_button">
+          <div className="add_button">
             <button
               onClick={() => {
                 addTodo(todoTitle);
               }}
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             >
               Add
             </button>
@@ -71,21 +71,21 @@ export default function Home() {
         <div>
           {/** TODO List{JSON.stringify(todoList)} */}
           {/** TODO LIST UI */}
-          <table class="table-auto">
+          <table className="table-auto">
             <thead>
               <tr>
-                <th class="px-4 py-2">#</th>
-                <th class="px-4 py-2">Title</th>
-                <th class="px-4 py-2">Detail</th>
-                <th class="px-4 py-2">Delete</th>
+                <th className="px-4 py-2">#</th>
+                <th className="px-4 py-2">Title</th>
+                <th className="px-4 py-2">Detail</th>
+                <th className="px-4 py-2">Delete</th>
               </tr>
             </thead>
             <tbody>
               {todoList.map((todoItem, index) => (
-                <tr class={index % 2 == 0 ? "" : "bg-gray-100"}>
-                  <td class="border px-4 py-2">{index}</td>
-                  <td class="border px-4 py-2">{todoItem.title}</td>
-                  <td class="border px-4 py-2">
+                <tr className={index % 2 == 0 ? "" : "bg-gray-100"} key={index}>
+                  <td className="border px-4 py-2">{index}</td>
+                  <td className="border px-4 py-2">{todoItem.title}</td>
+                  <td className="border px-4 py-2">
                     <Link
                       className="todo_item_title"
                       href={`/todo/${todoItem.id}`}
@@ -104,12 +104,12 @@ export default function Home() {
                       </button>
                     </Link>
                   </td>
-                  <td class="border px-4 py-2">
+                  <td className="border px-4 py-2">
                     <button
                       onClick={() => {
                         deleteTodo(todoItem.id);
                       }}
-                      class="bg-red-300 hover:bg-grey text-grey-darkest font-bold py-2 px-4 rounded inline-flex items-center"
+                      className="bg-red-300 hover:bg-grey text-grey-darkest font-bold py-2 px-4 rounded inline-flex items-center"
                     >
                       <svg
                         fill="#000000"

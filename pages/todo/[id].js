@@ -63,10 +63,10 @@ const TodoDetail = () => {
         <div>
           <h1>Todo詳細ページ</h1>
           <p>Todoのタイトル:「{todoItemTitle}」を編集します</p>
-          <div class="grid grid-cols-3 gap-4">
-            <div class="col-span-2">
+          <div className="grid grid-cols-3 gap-4">
+            <div className="col-span-2">
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 type="text"
                 autoFocus={true}
                 placeholder="Todo List"
@@ -77,7 +77,7 @@ const TodoDetail = () => {
 
             <div className="todo_item_button">
               {isLoading ? (
-                <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
+                <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
                   Editing...
                 </button>
               ) : (
@@ -106,7 +106,7 @@ const TodoDetail = () => {
                   <defs></defs>
                   <title>back</title>
                   <path
-                    class="cls-1"
+                    className="cls-1"
                     d="M61.44,0A61.51,61.51,0,1,1,18,18,61.25,61.25,0,0,1,61.44,0Zm5,45.27A7.23,7.23,0,1,0,56.14,35.13L35,56.57a7.24,7.24,0,0,0,0,10.15l20.71,21A7.23,7.23,0,1,0,66.06,77.62l-8.73-8.87,24.86-.15a7.24,7.24,0,1,0-.13-14.47l-24.44.14,8.84-9Z"
                   />
                 </svg>
