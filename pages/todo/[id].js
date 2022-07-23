@@ -14,7 +14,7 @@ const TodoDetail = () => {
   const [todoItemTitle, setTodoItemTitle] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const notify = () => toast("保存に成功しました。");
+  const notify = () => toast("保存に成功しました");
 
   useEffect(() => {
     if (router.isReady) {
