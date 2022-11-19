@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
 
-const PokeDetailPage = ({ pokeData }) => {
+const PokeDetailPage = () => {
+  const router = useRouter();
+  // パスパラメータから値を取得
+  const pokeID = router.query.id;
+  const [pokeData, setPokeData] = useState(null);
+  const POKEMON_DETAIL_URL = `https://pokeapi.co/api/v2/pokemon/${pokeID}/`;
+
+  /*axios.get(POKEMON_DETAIL_URL).then(res => { 
+    setPokeData(res.data);
+  }).catch(err => {
+    console.log(err);
+  });*/
+
+  useEffect(() => {
+    axios.get(POKEMON_DETAIL_URL)
+      .then(res => { 
+        setPokeData(res.data);
+      }).catch(err => {
+        console.log(err);
+      }
+      );
+  },[pokeID]);
+
+  if (!pokeData) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <div className="max-w-2xl mx-auto">
@@ -29,6 +57,7 @@ const PokeDetailPage = ({ pokeData }) => {
   );
 };
 
+/*
 export async function getServerSideProps(context) {
   const pokeID = context.params.id;
   const POKEMON_DETAIL_URL = `https://pokeapi.co/api/v2/pokemon/${pokeID}/`;
@@ -41,6 +70,6 @@ export async function getServerSideProps(context) {
     }
   const pokeData = await res.json();
   return { props: { pokeData } };
-}
+}*/
 
 export default PokeDetailPage;

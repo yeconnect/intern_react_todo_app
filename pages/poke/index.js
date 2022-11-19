@@ -3,13 +3,11 @@ import React, { useEffect, useState } from "react";
 
 const POKEMON_LIST_URL = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
 
-
 const PokeList = () => {
   const [pokemonList, setPokemonList] = useState([]);
 
   useEffect(() => {
     axios.get(POKEMON_LIST_URL)
-
       .then(res => {
         setPokemonList(res.data.results);
       }).catch(err => {
