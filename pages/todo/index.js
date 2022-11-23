@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { v4 as uuid } from 'uuid';
 import styles from "../../styles/Home.module.css";
 import MyButton from "../../components/button";
@@ -11,9 +10,6 @@ import MyButton from "../../components/button";
 export default function Home() {
   const [todoList, setTodoList] = useState([]);
   const [todoTitle, setTodoTitle] = useState("");
-
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
 
   /** get todo list in the local storage */
   useEffect(() => {
@@ -24,8 +20,7 @@ export default function Home() {
   }, []);
 
   /** Add TODO in the local storage */
-  const addTodo = (e) => {
-    e.preventDefault();
+  const addTodo = () => {
     const newTodo = {
       id: uuid(),
       title: todoTitle,
@@ -55,7 +50,6 @@ export default function Home() {
         <h1 className="text-3xl font-bold">Todo List</h1>
         <div className="grid grid-cols-3 gap-4">
           <div className="col-span-2">
-            <form onSubmit={addTodo}>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 autoFocus={true}
@@ -64,13 +58,9 @@ export default function Home() {
                 value={todoTitle}
                 onChange={(e) => setTodoTitle(e.target.value)}
               />
-              <div className="add_button">
-                <input
-                  type="submit"
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                />
-              </div>
-            </form>
+              <button className="bg-blue-300 hover:bg-grey text-grey-darkest font-bold py-2 px-4 rounded inline-flex items-center" onClick={addTodo}>
+                送信
+              </button>
           </div>
         </div>
         <div>

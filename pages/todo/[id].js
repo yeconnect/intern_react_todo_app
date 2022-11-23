@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import styles from "../../styles/Home.module.css";
 import Head from "next/head";
 import Link from "next/link";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const TodoDetail = () => {
@@ -14,11 +13,9 @@ const TodoDetail = () => {
   const [todoItemTitle, setTodoItemTitle] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const notify = () => toast("保存に成功しました");
-
   useEffect(() => {
-    if (router.isReady) {
-      // get todo detail by id
+    /* パスパラメータが受け取れる(idが入る)まで待つ*/
+    if (id) {
       const todoListStr = localStorage.getItem("todoList");
       if (todoListStr) {
         const todoList = JSON.parse(todoListStr);
@@ -26,18 +23,12 @@ const TodoDetail = () => {
         setTodoItemTitle(todoItem.title);
       }
     }
-  }, [query, router]);
-
-  const wait = (milisec) => {
-    return new Promise((resolve, reject) => {
-      setTimeout(resolve, milisec);
-    });
-  };
+    }, [id]);
+  
 
   /** Update TODO in the local storage */
-  const editTodo = async (todoTitle) => {
+  const editTodo = (todoTitle) => {
     setIsLoading(true);
-    await wait(500);
     const todoList = JSON.parse(localStorage.getItem("todoList"));
     const newTodoList = todoList.map((todoItem) => {
       if (todoItem.id === id) {
@@ -48,7 +39,6 @@ const TodoDetail = () => {
     setTodoItemTitle(todoTitle);
     localStorage.setItem("todoList", JSON.stringify(newTodoList));
     setIsLoading(false);
-    notify();
   };
 
   return (
@@ -115,17 +105,6 @@ const TodoDetail = () => {
             </Link>
           </div>
         </div>
-        <ToastContainer
-          position="bottom-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
       </main>
     </div>
   );
