@@ -17,6 +17,7 @@ const PokeList = () => {
   }
   , []);
 
+  // pokemonのIDを取ってくる関数
   const getIdFromUrl= (url) => {
     return url.split("/").slice(-2)[0]
   }

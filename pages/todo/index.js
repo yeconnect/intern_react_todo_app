@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { v4 as uuid } from 'uuid';
 import styles from "../../styles/Home.module.css";
+import MyButton from "../../components/button";
+
 
 export default function Home() {
   const [todoList, setTodoList] = useState([]);
@@ -58,7 +60,6 @@ export default function Home() {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 autoFocus={true}
                 type="text"
-                {...register("title", { required: true, maxLength: 20 })}
                 placeholder="Todo List"
                 value={todoTitle}
                 onChange={(e) => setTodoTitle(e.target.value)}
@@ -131,6 +132,7 @@ export default function Home() {
               ))}
             </tbody>
           </table>
+          <MyButton title={"コンポーネント化"}/>
         </div>
       </main>
 

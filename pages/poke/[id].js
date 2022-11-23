@@ -9,12 +9,6 @@ const PokeDetailPage = () => {
   const [pokeData, setPokeData] = useState(null);
   const POKEMON_DETAIL_URL = `https://pokeapi.co/api/v2/pokemon/${pokeID}/`;
 
-  /*axios.get(POKEMON_DETAIL_URL).then(res => { 
-    setPokeData(res.data);
-  }).catch(err => {
-    console.log(err);
-  });*/
-
   useEffect(() => {
     axios.get(POKEMON_DETAIL_URL)
       .then(res => { 
